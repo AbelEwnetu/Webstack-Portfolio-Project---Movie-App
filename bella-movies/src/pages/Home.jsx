@@ -44,11 +44,19 @@ function Home() {
             <button type="submit" className="search-button">Search</button>
         </form>
 
-        <div className="movies-grid">
-            {movies.map(movie => <MovieCard movie={movie} key={movie.id}/>)}
+            {error && <div className="error-message">{error}</div>}
+
+        {loading ? (
+        <div className="loading">Loading...</div>
+        ) : (
+            <div className="movies-grid">
+            {movies.map((movie) => (
+                <MovieCard movie={movie} key={movie.id} />
+            ))}
         </div>
+      )}
     </div>
-    );
+  );
 }
 
 export default Home;
